@@ -32,12 +32,23 @@ function handleDelete(plantToDelete){
       setPlants(updatedPlants)
 
 }
+function handleUpdate(plantToUpdate){
+  const updatedPlants = plants.map((plant)=> { 
+    if (plant.id === plantToUpdate.id) {
+    return plantToUpdate
+  } else {
+    return plant
+  }
+
+  })
+  setPlants(updatedPlants)
+}
 
   return (
     <main>
       <NewPlantForm onAddPlant={handleAddPlant} />
       <Search search={search} onSearch={handleSearch}/>
-      <PlantList onDelete={handleDelete} plants={filterPlants}/>
+      <PlantList onUpdate={handleUpdate} onDelete={handleDelete} plants={filterPlants}/>
     </main>
   );
 }
